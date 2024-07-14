@@ -1,0 +1,27 @@
+<div class="container">
+  <form action="/cadastro" method="post" class="formLogin">
+    <h2 class="form-title">Cadastro</h2>
+    <p class="mb-2">Preencha os dados abaixo para se cadastrar</p>
+    <div class="container">
+      <div class="mb-2">
+        <label for="nome" class="form-label">Usuario <storng class="text-danger">*</storng></label>
+        <input type="text" class="form-control" id="nome" name="nome" required>
+      </div>
+      <div class="mb-2">
+        <label for="email" class="form-label">Email <storng class="text-danger">*</storng></label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="mb-2">
+        <label for="senha" class="form-label">Senha <storng class="text-danger">*</storng></label>
+        <input type="password" class="form-control" id="senha" name="senha" required>
+      </div>
+      <div class="mb-2">
+        <label for="biografia" class="form-label">Biografia</label>
+        <textarea name="biografia" class="form-control" style="height: 119px;" id="biografia" cols="30" rows="10"></textarea>
+      </div>
+      <div class="d-grid gap-2 mb-2">
+        <button type="submit" class="btn btn-success"><i>Criar conta</i></button>
+      </div>
+    </div>
+  </form>
+</div>

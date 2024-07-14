@@ -1,0 +1,112 @@
+{{!-- <div class="containerNewPost">
+  <div class="addNewPost">
+    <div class="newPost">
+      <form action="/publicar" method="post" class="addPost">
+        <div class="userInfo">
+          <div class="user">
+            <div class="userImg">
+
+            </div>
+            <div class="userName">
+              <strong>
+                <a href="/{{dataUser.nome}}">{{dataUser.nome}}</a>
+              </strong>
+            </div>
+          </div>
+        </div>
+        <div class="inputTitle">
+          <div class="addTitle">
+            <label for="title">Titulo <strong class="important">*</strong></label><br>
+            <input type="text" name="title" id="title" class="title" placeholder="Titulo do post">
+          </div>
+        </div>
+        <div class="content">
+          <div class="addContent">
+            <textarea name="content" id="content" class="content" placeholder="Vamos mudar o mundo?" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="subButtons"></div>
+          <div class="mainButtons">
+            <button type="submit" class="submit">Publicar</button>
+            <button type="button" class="cancel">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="posts">
+  <div class="listPosts">
+    {{#each posts}}
+      <div class="post">
+        <div class="userInfo">
+          <div class="user">
+            <div class="userImg">
+            </div>
+            <div class="userName">
+              <strong>
+                <a href="/{{nome}}">{{nome}}</a>
+              </strong>
+            </div>
+          </div>
+          <div class="postContent">
+            {{{conteudo}}}
+            <br><br>
+            
+          </div>
+          <div class="postDate">
+            <small><i>{{data}}</i></small>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div> --}}
+{{!-- 1024px --}}
+{{!-- 768px --}}
+
+<div class="container mb-3">
+  <div class="container">
+    <form action="/publicar" method="post" class="form-control">
+      <div class="p-2">
+        <div class="user-name">
+          <a href="/{{dataUser.nome}}">{{dataUser.nome}}</a>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Título <storng class="text-danger">*</storng></label>
+        <input type="text" class="form-control" id="title" name="titulo" required="Campo obrigatório">
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Conteúdo <storng class="text-danger">*</storng></label>
+        <textarea class="form-control" id="content" name="content" rows="3" style="height: 119px; resize: none;" required="Campo obrigatório"></textarea>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-success">Publicar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container">
+  <div class="container">
+    {{#each posts}}
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="user-info">
+            <a href="/{{nome}}">{{nome}}</a>
+            <small class="text-muted"> - {{data}}</small>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <h5>{{titulo}}</h5>
+          </div>
+          <div class="card-text" style="white-space:nowrap; overflow: hidden; text-overflow: ellipsis;">
+            {{{conteudo}}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

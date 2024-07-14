@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+
+}
+
+.header{
+  background-color: #23a0ff;
+  color: white;
+  padding: 14px 16px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  box-shadow: 1px 0 3px rgba(0,0,0,.3);
+  justify-content: space-between;
+  flex-direction: row;
+  
+}
+
+.header .logo h2{
+  font-style: italic;
+
+}
+
+.header a {
+  text-decoration: none;
+  color: white;
+}
+.header ul{
+  margin: 0;
+  display: inline;
+}
+.header ul li{
+  display: inline;
+  padding: 0 10px;
+  list-style: none;
+}
+
+.page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2.3em;
+  
+}
+.formLogin{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background: #f2f2f2;
+  border-radius: 7px;
+  padding: 40px;
+  box-shadow: 10px 10px 40px rgba(0,0,0,.4);
+  gap: 5;
+}
+.formLogin h2{
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 2.3em;
+}
+.formLogin p{
+  display: inline-block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 25px;
+}
+.formLogin input, .addTitle input{
+  padding: 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  border-radius: 4px;
+  transition: all linear 160ms;
+  outline: none;
+}
+.formLogin input:focus, .addTitle input:focus{
+  border: 1px solid #4CAF50;
+}
+
+.addTitle input{
+  margin-top: 10px;
+  width: 100%;
+}
+label{
+  font-size: 14px;
+  font-weight: 600;
+}
+.formLogin a{
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #555;
+  transition: all linear 160ms;
+}
+.formLogin a:hover{
+  color: #f72585;
+}
+.btn{
+  /* background-color: #f72585; */
+  background: #4CAF50;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none !important;
+  transition: all linear 160ms;
+  cursor: pointer;
+  margin: 0 !important;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+.btn:hover{
+  transform: scale(1.05);
+  background-color: #4CAF50;
+  box-shadow: 1px 0 1px rgba(0,0,0,.3);
+}
+.bio{
+  border-radius: 4px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  resize: none;
+  outline: none;
+  transition: all linear 160ms;
+  width: 100%;
+  height: 60px;
+}
+.bio:focus{
+  border: 1px solid #f72585;
+}
+
+.important{
+  color: #f72585;
+  
+}
+.alert p{
+  font-weight: bold;
+  color: #f44336;
+}
+div.containerNewPost{
+  width: 90%;
+  margin: auto;
+  margin-top: 1em;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 7px;
+  box-shadow: 1px 0 3px rgba(0,0,0,.4);
+}
+div.containerNewPost div.addNewPost div.newPost form.addPost div.userInfo div.user{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+div.userImg{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #555;
+  margin-right: 5px;
+}
+div.userName strong, a{
+  color: #23a0ff;
+  margin-left: 10px;
+}
+
+div.content div.addContent textarea{
+  width: 100%;
+  height: 140px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #ccc;
+  padding: 5px;
+  resize: none;
+  transition: all linear 160ms;
+}
+
+div.content div.addContent textarea:focus{
+  border: 1px solid #23a0ff;
+  box-shadow: 1px 0 3px rgba(0,0,0,.3);
+}
+
+div.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+div.buttons div.subButtons{
+  display: flex;
+  align-items: center;
+}
+
+div.buttons div.subButtons button{
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  background: none;
+  color: #23a0ff;
+  transition: all linear 160ms;
+}
+
+div.buttons div.subButtons button:hover{
+  transform: scale(1.3);
+}
+
+div.buttons div.mainButtons button{
+  border: none;
+  outline: none;
+  color: #23a0ff;
+  padding: 10px 20px;
+  border-radius: 7px;
+  font-weight: bold;
+  transition: all linear 160ms;
+}
+
+div.buttons div.mainButtons button:hover{
+  transform: scale(0.9);
+}
+div.buttons div.mainButtons button.submit{
+  background-color: #23a0ff;
+  color: #ffffff;
+}
+
+div.buttons div.mainButtons button.cancel{
+  background-color: #f72585;
+  color: #ffffff;
+}
+div.post div.userInfo div.user{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+div.post{
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 7px;
+  box-shadow: 1px 0 3px rgba(0,0,0,.4);
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+div.postContent{
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
