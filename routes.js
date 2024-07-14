@@ -15,8 +15,8 @@ const hbs = require("express-handlebars")
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-app.engine("hbs", hbs.engine)
-app.set('view engine', 'hbs')
+app.engine("handlebars", hbs.engine)
+app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname + '/views'))
 
 app.get('/', async(req, res)=>{
