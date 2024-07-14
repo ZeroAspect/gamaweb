@@ -2,26 +2,18 @@ const express = require("express")
 const app = require("./config/config.js")
 const sequelize = require("sequelize")
 const db = require("./databases/sequelize.js")
-const { create } = require("express-handlebars")
+// const { create } = require("express-handlebars")
 const path = require("path")
 const getIpGeolocation = require("./getUser/ip.js")
 const MySQLConnection = require("./databases/mysql2.js")
 const User = require("./models/GetSequelizeUsers.js")
 const { marked } = require("marked")
 const Post = require("./models/GetSequelizePosts.js")
-// const hbs = require("express-handlebars")
+const hbs = require("express-handlebars")
 // Set up handlebars view engine
 
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-
-const hbs = create({
-  extname: ".hbs",
-  defaultLayout: "main",
-  layoutsDir: "./views/layouts/",
-  partialsDir: "./views/partials/"
-})
 
 app.engine("hbs", hbs.engine)
 app.set('view engine', 'hbs')
