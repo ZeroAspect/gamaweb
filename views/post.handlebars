@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="container">
+    {{#each post}}
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="user-info">
+            <a href="/{{nome}}">{{nome}}</a>
+            <small class="text-muted"> - {{data}}</small>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <h5>{{titulo}}</h5>
+          </div><hr>
+          <div class="card-text">
+            {{{conteudo}}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
