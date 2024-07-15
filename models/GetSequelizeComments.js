@@ -1,34 +1,29 @@
 const sequelize = require("sequelize")
 const db = require("../databases/sequelize.js")
 
-const Post = db.define("posts", {
+const Comentarios = db.define("comentarios", {
   id: {
     type: sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
     allowNull: false
   },
+  post_id: {
+    type: sequelize.INTEGER,
+    allowNull: false
+  },
   nome: {
     type: sequelize.TEXT,
     allowNull: false
   },
-  titulo: {
-    type: sequelize.TEXT,
-    allowNull: false
-  },
-  conteudo: {
+  comentario: {
     type: sequelize.TEXT,
     allowNull: false
   },
   data: {
     type: sequelize.DATE,
     allowNull: false
-  },
-  curtidas: {
-    type: sequelize.INTEGER,
-    defaultValue: 0,
-    allowNull: false
   }
 })
 
-module.exports = Post
+module.exports = Comentarios
