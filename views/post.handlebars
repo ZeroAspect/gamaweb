@@ -20,3 +20,22 @@
     {{/each}}
   </div>
 </div>
+
+<!-- Formulário para comentar -->
+<div class="container">
+  {{#each post}}
+    <form action="/post/{{id}}/publicar/comentario" class="form-control mb-3" method="post">
+      <div class="mb-3">
+        <label for="comentario" class="form-label">Comentário</label>
+        <textarea class="form-control" id="comentario" name="comentario" style="height: 119px; resize: none;" rows="3"></textarea>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-success">
+          <i>
+            Comentar
+          </i>
+        </button>
+      </div>
+    </form>
+  {{/each}}
+</div>

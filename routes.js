@@ -160,7 +160,7 @@ app.get('/post/:id', async(req, res)=>{
     const [ post ] = await query.query(`
       SELECT * FROM posts WHERE id = ${id}
     `)
-    res.render('post', { post })
+    res.render('post', { nome: user['nome'], post })
     // res.json(post)
   }
 })
