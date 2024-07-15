@@ -146,3 +146,21 @@ app.post('/publicar', async(req, res)=>{
   console.log(createPost)
   res.redirect('/')
 })
+app.get('/post/:id', async(req, res)=>{
+  const { id } = req.params
+  const query = await MySQLConnection()
+  const ip = await getIpGeolocation()
+  console.log(ip['ip'])
+  const user = await User.findOne({
+    where: { ip: ip['ip'] }
+  })
+  if(user === null){
+    res.redirect('/login')
+  } else {
+    const [ post ] = await query.query(`
+      SELECT * FROM posts WHERE id = ${id}
+    `)
+    // res.render('post', { post })
+    res.json(post)
+  }
+})
