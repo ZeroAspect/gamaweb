@@ -10,6 +10,7 @@ const User = require("./models/GetSequelizeUsers.js")
 const { marked } = require("marked")
 const Post = require("./models/GetSequelizePosts.js")
 const hbs = require("express-handlebars")
+const Comentarios = require("./models/GetSequelizeComments.js")
 // Set up handlebars view engine
 
 app.use(express.json())
@@ -160,7 +161,63 @@ app.get('/post/:id', async(req, res)=>{
     const [ post ] = await query.query(`
       SELECT * FROM posts WHERE id = ${id}
     `)
-    res.render('post', { nome: user['nome'], post })
+    const [ comments ] = await query.query(`
+      SELECT * 
+      FROM comentarios
+      WHERE post_id = ${id}
+      `)
+    res.render('post', { nome: user['nome'], post, comments: comments })
     // res.json(post)
+  }
+})
+app.post('/post/:id/publicar/comentario', async(req, res)=>{
+  const { id } = req.params
+  const { comentario } = req.body
+  const ip = await getIpGeolocation()
+  console.log(ip['ip'])
+  const user = await User.findOne({
+    where: { ip: ip['ip'] }
+  })
+  if(user === null){
+    res.redirect('/login')
+  } else {
+    // const createComment = await Post.update({
+    //   conteudo: `${post['conteudo']}<br><br>Comentário de ${user['nome']}: ${comentario}`
+    // }, {
+    //   where: { id: id }
+    // })
+    // console.log(createComment)
+    // res.redirect(`/post/${id}`)
+    const createComment = await Comentarios.create({
+      post_id: id,
+      nome: user['nome'],
+      comentario: comentario,
+      data: Date()
+    })
+    console.log(createComment)
+    res.redirect(`/post/${id}`)
+  }
+})
+app.post("/post/:id/like", async(req, res)=>{
+  const { id } = req.params
+  const ip = await getIpGeolocation()
+  console.log(ip['ip'])
+  const user = await User.findOne({
+    where: { ip: ip['ip'] }
+  })
+  if(user === null){
+    res.redirect('/login')
+  } else {
+    const post = await MySQLConnection()
+    const [ update ] = await post.query(`
+      UPDATE
+      posts
+      SET
+      curtidas = curtidas + 1
+      WHERE
+      id = ${id}
+      `)
+    console.log(update)
+    res.redirect(`/post/${id}`)
   }
 })
