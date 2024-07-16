@@ -1,0 +1,42 @@
+<div class="container">
+  <h2 class="mb-3">
+    {{nome}}
+  </h2>
+  {{#each info}}
+    <div class="nav nav-tabs d-flex justify-content-between">
+      <li class="nav-item">
+        <a href="/{{nome}}" class="nav-link active">
+          Perfil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/{{nome}}" class="nav-link">
+          Publicações
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/{{nome}}" class="nav-link">
+          Comentarios
+        </a>
+      </li>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <small class="text-muted">
+          - {{createdAt}}
+        </small>
+      </div>
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header">
+            Descrição
+          </div>
+          <div class="card-body">
+            {{{biografia}}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/editar/perfil">Editar seu perfil</a>
+  {{/each}}
+</div>
