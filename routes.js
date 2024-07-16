@@ -279,3 +279,20 @@ app.post("/editar/perfil", async(req, res)=>{
     res.redirect(`/${user['nome']}`)
   }
 })
+app.get('/:nome/publicacoes', async(req, res)=>{
+  const { nome } = req.params
+  const query = await MySQLConnection()
+  const ip = await getIpGeolocation()
+  console.log(ip['ip'])
+  const user = await User.findOne({
+    where: { ip: ip['ip'] }
+  })
+  if(user === null){
+    res.redirect('/login')
+  } else {
+    const [ posts ] = await query.query(`
+      SELECT * FROM posts WHERE nome = '${nome}' ORDER BY data DESC
+    `)
+    res.render('publicacoes', { nome: user['nome'], posts })
+  }
+})
