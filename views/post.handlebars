@@ -2,10 +2,13 @@
   <div class="container">
     {{#each post}}
       <div class="card mb-3">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between">
           <div class="user-info">
             <a href="/{{nome}}">{{nome}}</a>
             <small class="text-muted"> - {{data}}</small>
+          </div>
+          <div class="likes text-muted">
+            {{curtidas}} likes
           </div>
         </div>
         <div class="card-body">
@@ -25,7 +28,6 @@
                   Curtir
                 </button>
               </small>
-              {{curtidas}}
             </form>
           </div>
           {{!-- <div class="card-footer">
