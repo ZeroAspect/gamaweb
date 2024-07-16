@@ -1,0 +1,44 @@
+<div class="container">
+  <h2 class="mb-3">
+    Editar perfil
+  </h2>
+  {{#each info}}
+    <form action="/editar/perfil" method="post">
+    
+      <div class="mb-3">
+        <label for="nome">Nome <strong class="text-danger">*</strong></label>
+        <input type="text" class="form-control" id="nome" name="nome" value="{{nome}}" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="email">Email <strong class="text-danger">*</strong></label>
+        <input type="email" class="form-control" id="email" name="email" value="{{email}}" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="senha">Senha <strong class="text-danger">*</strong></label>
+        <input type="password" class="form-control" id="senha" name="senha" value="{{senha}}">
+        <input type="checkbox" name="viewPassword" id="viewPassword">
+        <label for="viewPassword">Mostrar senha</label>
+      </div>
+      <div class="mb-3">
+        <label for="biografia">Biografia</label>
+        <textarea class="form-control" id="biografia" name="biografia" style="height: 119px; resize: none;">{{biografia}}</textarea>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-success">
+          <i>
+            Salvar alterações
+          </i>
+        </button>
+      </div>
+    </form>
+  {{/each}}
+</div>
+
+<script>
+  "use strict";
+  const viewPassword = document.getElementById("viewPassword");
+  viewPassword.addEventListener("change", ()=>{
+    const senha = document.getElementById("senha");
+    senha.type = viewPassword.checked? "text" : "password";
+  })
+</script>
