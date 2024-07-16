@@ -221,3 +221,20 @@ app.post("/post/:id/like", async(req, res)=>{
     res.redirect(`/post/${id}`)
   }
 })
+app.get('/:nome', async(req, res)=>{
+  const { nome } = req.params
+  const query = await MySQLConnection()
+  const ip = await getIpGeolocation()
+  console.log(ip['ip'])
+  const user = await User.findOne({
+    where: { ip: ip['ip'] }
+  })
+  if(user === null){
+    res.redirect('/login')
+  } else {
+    const [ info ] = await query.query(`
+      SELECT * FROM users WHERE nome = '${nome}'
+    `)
+    res.render('perfil', { nome: user['nome'], info })
+  }
+})
