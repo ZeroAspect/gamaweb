@@ -238,3 +238,44 @@ app.get('/:nome', async(req, res)=>{
     res.render('perfil', { nome: user['nome'], info })
   }
 })
+app.get("/editar/perfil", async(req, res)=>{
+  const query = await MySQLConnection()
+  const ip = await getIpGeolocation()
+  console.log(ip['ip'])
+  const user = await User.findOne({
+    where: { ip: ip['ip'] }
+  })
+  if(user === null){
+    res.redirect('/login')
+  } else {
+    const [ info ] = await query.query(`
+      SELECT * FROM users WHERE nome = '${user['nome']}'
+    `)
+    res.render('editar_perfil', { nome: user['nome'], info })
+  }
+})
+app.post("/editar/perfil", async(req, res)=>{
+  const { nome, senha, email, biografia } = req.body
+  const query = await MySQLConnection()
+  const ip = await getIpGeolocation()
+  console.log(ip['ip'])
+  const user = await User.findOne({
+    where: { ip: ip['ip'] }
+  })
+  if(user === null){
+    res.redirect('/login')
+  } else {
+    const [ update ] = await query.query(`
+      UPDATE users
+      SET 
+      nome = '${nome}',
+      email = '${email}',
+      senha = '${senha}',
+      biografia = '${marked(biografia)}'
+      WHERE
+      ip = '${ip['ip']}'
+      `)
+    console.log(update)
+    res.redirect(`/${user['nome']}`)
+  }
+})
