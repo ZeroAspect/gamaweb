@@ -1,0 +1,38 @@
+<div class="container">
+  <h2 class="mb-5">
+    {{nome}}
+  </h2>
+  <div class="nav nav-tabs d-flex justify-content-between">
+    <li class="nav-item">
+      <a href="/{{nome}}" class="nav-link">
+        Perfil
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/{{nome}}/publicacoes" class="nav-link">
+        Publicações
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/{{nome}}/comentarios" class="nav-link active">
+        Comentarios
+      </a>
+    </li>
+  </div>
+  {{#each comments}}
+    <div class="card mb-3">
+      <div class="card-header d-flex justify-content-betwenn">
+        <div class="user-info">
+          <a href="/{{nome}}">{{nome}}</a>
+          <small class="text-muted"> - {{data}}</small>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          {{{comentario}}}
+        </div>
+        <a href="/post/{{post_id}}">Ir para post</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
