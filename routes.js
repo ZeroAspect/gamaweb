@@ -296,3 +296,20 @@ app.get('/:nome/publicacoes', async(req, res)=>{
     res.render('publicacoes', { nome: user['nome'], posts })
   }
 })
+app.get('/:nome/comentarios', async(req, res)=>{
+  const { nome } = req.params
+  const query = await MySQLConnection()
+  const ip = await getIpGeolocation()
+  console.log(ip['ip'])
+  const user = await User.findOne({
+    where: { ip: ip['ip'] }
+  })
+  if(user === null){
+    res.redirect('/login')
+  } else {
+    const [ comments ] = await query.query(`
+      SELECT * FROM comentarios WHERE nome = '${nome}' ORDER BY id DESC
+    `)
+    res.render('comentarios', { nome: user['nome'], comments })
+  }
+})
